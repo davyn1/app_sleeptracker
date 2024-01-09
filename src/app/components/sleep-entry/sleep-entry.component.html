@@ -1,0 +1,27 @@
+<!-- sleep-entry-form.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add A Sleep Entry</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Start of Sleep</ion-label>
+    <ion-datetime [(ngModel)]="newSleepStart" displayFormat="MMM DD, YYYY HH:mm" pickerFormat="MMM DD YYYY HH mm"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">End of Sleep</ion-label>
+    <ion-datetime [(ngModel)]="newSleepEnd" displayFormat="MMM DD, YYYY HH:mm" pickerFormat="MMM DD YYYY HH mm"></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addSleepEntry()">Add Sleep Entry</ion-button>
+
+  <div *ngIf="isInvalidTime">
+    <ion-text color="danger">End time must be after the start time.</ion-text>
+  </div>
+</ion-content>

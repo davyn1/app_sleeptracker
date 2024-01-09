@@ -1,0 +1,20 @@
+<!-- overnight-log.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title size="large" class="ion-text-center">Overnight Log</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item *ngFor="let sleepData of allOvernightData" style="margin-bottom: 5px;">
+    {{ sleepData.summaryString() }}
+    (Went to sleep on: {{ sleepData.dateString() }})
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openSleepEntryModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

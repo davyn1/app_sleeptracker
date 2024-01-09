@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Sleepiness Log</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let sleepyData of allSleepyData">
+    <ion-card-header (click)="toggleDetails(sleepyData)">
+      {{ sleepyData.summaryString() }}
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngIf="sleepyData.showDetails">
+        Logged at: {{ sleepyData.loggedAt }}
+      </div>
+
+      <ion-item>
+        <ion-input [(ngModel)]="sleepyData.additionalNotes" placeholder="Add notes..." aria-label="Additional Notes"></ion-input>
+      </ion-item>
+
+      <!-- Save button for additional notes -->
+      <ion-button (click)="saveAdditionalNotes(sleepyData)">
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+        Save Notes</ion-button>
+    </ion-card-content>
+
+    <ion-button (click)="toggleDetails(sleepyData)">Toggle Details</ion-button>
+    
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openSleepEntryModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

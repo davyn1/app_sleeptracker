@@ -1,0 +1,20 @@
+<!-- sleep-entry.component.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Sleep Entry Form</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Add your input fields for Sleepy Log data -->
+  <ion-item>
+    <ion-label>Sleepiness Level</ion-label>
+    <ion-range [(ngModel)]="sleepinessLevel" min="1" max="7" step="1" aria-label="Sleepiness Level"></ion-range>
+    <ion-label slot="end">{{ sleepinessLevel }}</ion-label>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addSleepinessEntry()">Add Sleepy Log Entry</ion-button>
+</ion-content>
